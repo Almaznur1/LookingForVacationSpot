@@ -19,10 +19,9 @@ class Place(models.Model):
 
 
 class Image(models.Model):
-    img = models.ImageField()
+    img = models.ImageField(verbose_name='Картинка')
     place = models.ForeignKey(Place, on_delete=models.CASCADE,
-                              related_name='images',
-                              null=True)
+                              related_name='images')
     img_position = models.IntegerField(verbose_name='Позиция')
 
     def __str__(self):
