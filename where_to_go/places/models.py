@@ -21,6 +21,7 @@ class Place(models.Model):
 class Image(models.Model):
     img = models.ImageField()
     place = models.ForeignKey(Place, on_delete=models.CASCADE,
+                              related_name='photos',
                               null=True)
 
     def __str__(self):
