@@ -33,7 +33,8 @@ def show_place_json(request, place_id):
     place = get_object_or_404(Place, pk=place_id)
     response = {
         "title": place.title,
-        "imgs": [photo.img.url for photo in place.photos.all()],
+        "imgs": [photo.img.url for photo
+                 in place.images.order_by('img_position')],
         "description_short": place.description_short,
         "description_long": place.description_long,
         "coordinates": {
