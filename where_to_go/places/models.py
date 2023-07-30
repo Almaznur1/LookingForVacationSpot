@@ -13,3 +13,12 @@ class Place(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class Image(models.Model):
+    img = models.ImageField()
+    place = models.ForeignKey(Place, on_delete=models.CASCADE,
+                              null=True)
+
+    def __str__(self):
+        return f'{self.id} {self.place.title}'
