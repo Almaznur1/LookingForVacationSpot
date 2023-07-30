@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import JsonResponse
+from django.urls import reverse
 from .models import Place
 
 
@@ -15,7 +16,7 @@ def show_start_page(request):
             "properties": {
                 "title": place.point_title,
                 "placeId": place.place_id,
-                "detailsUrl": f"static/places/{place.place_id}.json"
+                "detailsUrl": reverse(show_place_json, args=[place.id])
                 }
             } for place in places]
     print(features)
@@ -41,4 +42,5 @@ def show_place_json(request, place_id):
             }
         }
 
-    return JsonResponse(response, json_dumps_params={'ensure_ascii': False, 'indent': 4})
+    return JsonResponse(response, json_dumps_params={'ensure_ascii': False,
+                                                     'indent': 4})
