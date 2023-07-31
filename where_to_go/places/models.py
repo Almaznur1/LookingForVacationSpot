@@ -22,7 +22,12 @@ class Image(models.Model):
     img = models.ImageField(verbose_name='Картинка')
     place = models.ForeignKey(Place, on_delete=models.CASCADE,
                               related_name='images')
-    img_position = models.IntegerField(verbose_name='Позиция')
+    position = models.PositiveIntegerField(verbose_name='Позиция',
+                                           default=0,
+                                           db_index=True)
+
+    class Meta:
+        ordering = ['position']
 
     def __str__(self):
-        return f'{self.img_position} {self.place.title}'
+        return f'{self.position} {self.place.title}'
