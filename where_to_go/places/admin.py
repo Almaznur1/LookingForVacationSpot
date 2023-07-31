@@ -16,7 +16,7 @@ class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
                            f'{(obj.img.width / obj.img.height) * 200}px',
                            '200px',
                            )
-    
+
 
 @admin.register(Place)
 class PlaceAdmin(SortableAdminBase, admin.ModelAdmin):
