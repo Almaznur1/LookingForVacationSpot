@@ -1,7 +1,7 @@
 # LookingForVacationSpot - Study Project
 
-* [Демо-версия сайта](https://www.pythonanywhere.com/user/AlmazNuriakhmetov)
-* [Панель администратора](https://www.pythonanywhere.com/user/AlmazNuriakhmetov/admin)
+* [Демо-версия сайта](https://77.223.99.110)
+* [Панель администратора](https://77.223.99.110/admin)
 * [Проект на GitHub](https://github.com/Almaznur1/LookingForVacationSpot)
 
  # Куда пойти — Москва глазами Артёма
@@ -13,7 +13,7 @@
 
 ## Как добавить новую локацию
 
-* Откройте [панель администратора](https://www.pythonanywhere.com/user/AlmazNuriakhmetov/admin)
+* Откройте [панель администратора](https://almaznuriakhmetov.pythonanywhere.com/admin)
 * В левой колонке выберите `Места`
 * Вы можете добавить новую локацию и отредактировать имеющиеся
 
