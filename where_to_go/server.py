@@ -1,6 +1,7 @@
 from waitress import serve
 from where_to_go.wsgi import application
 import logging
+from where_to_go.settings import WAITRESS_HOST
 
 
 logging.basicConfig(
@@ -10,4 +11,4 @@ logger = logging.getLogger(__name__)
 
 
 if __name__ == '__main__':
-    serve(application, port='8000')
+    serve(application, host=WAITRESS_HOST, port='8000')

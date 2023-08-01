@@ -36,6 +36,7 @@ DEBUG = env.bool('DEBUG', default=False)
 
 ALLOWED_HOSTS = env.list('ALLOWED_HOSTS', default='127.0.0.1')
 
+WAITRESS_HOST = env.str('WAITRESS_HOST')
 # Application definition
 
 INSTALLED_APPS = [
