@@ -7,14 +7,6 @@ class Place(models.Model):
         verbose_name='Название',
         max_length=200,
         unique=True)
-    point_title = models.CharField(
-        verbose_name='Название метки на карте',
-        max_length=100)
-    place_id = models.CharField(
-        verbose_name='Идентификатор места',
-        max_length=200,
-        help_text='Придумайте буквенно-цифровой уникальный идентификатор',
-        unique=True)
     description_short = models.TextField(
         verbose_name='Короткое описание',
         blank=True)
@@ -33,7 +25,8 @@ class Place(models.Model):
 
 
 class Image(models.Model):
-    img = models.ImageField(verbose_name='Картинка')
+    img = models.ImageField(verbose_name='Картинка',
+                            unique=True)
     place = models.ForeignKey(Place, on_delete=models.CASCADE,
                               related_name='images')
     position = models.PositiveIntegerField(verbose_name='Позиция',
@@ -44,6 +37,7 @@ class Image(models.Model):
         ordering = ['position']
         verbose_name = 'Картинка'
         verbose_name_plural = 'Картинки'
+        unique_together = ['img', 'place']
 
     def __str__(self):
         return self.place.title

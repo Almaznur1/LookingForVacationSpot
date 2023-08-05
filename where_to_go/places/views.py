@@ -6,6 +6,7 @@ from .models import Place
 
 def show_start_page(request):
     places = Place.objects.all()
+
     features = [
         {
             "type": "Feature",
@@ -14,23 +15,23 @@ def show_start_page(request):
                 "coordinates": [place.lng, place.lat]
                 },
             "properties": {
-                "title": place.point_title,
-                "placeId": place.place_id,
+                "title": place.title,
+                "placeId": place.title,
                 "detailsUrl": reverse(show_place_json, args=[place.id])
                 }
             } for place in places]
-    print(features)
 
-    context = {
+    places_geojson = {
         "type": "FeatureCollection",
         "features": features
         }
 
-    return render(request, 'index.html', {'places_geojson': context})
+    return render(request, 'index.html', {'places_geojson': places_geojson})
 
 
 def show_place_json(request, place_id):
     place = get_object_or_404(Place, pk=place_id)
+
     response = {
         "title": place.title,
         "imgs": [photo.img.url for photo
