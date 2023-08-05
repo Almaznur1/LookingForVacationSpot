@@ -50,6 +50,7 @@ DEBUG=<set False for development and True for production>
 * Сделайте миграцию БД
 
 ```
+python manage.py makemigrations places
 python manage.py migrate
 ```
 
