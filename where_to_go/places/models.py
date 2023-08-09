@@ -31,7 +31,8 @@ class Image(models.Model):
                               related_name='images')
     position = models.PositiveIntegerField(verbose_name='Позиция',
                                            default=0,
-                                           db_index=True)
+                                           db_index=True,
+                                           blank=True)
 
     class Meta:
         ordering = ['position']

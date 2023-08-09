@@ -11,9 +11,8 @@ class ImageInline(SortableInlineAdminMixin, admin.TabularInline):
     list_display = ['img', 'get_preview', 'position']
 
     def get_preview(self, obj):
-        return format_html('<img src="{}" width="{}" height="{}" />',
+        return format_html('<img src="{}" height="{}" />',
                            obj.img.url,
-                           f'{(obj.img.width / obj.img.height) * 200}px',
                            '200px',
                            )
 
@@ -30,8 +29,7 @@ class ImageAdmin(admin.ModelAdmin):
     list_display = ['img', 'place', 'get_preview']
 
     def get_preview(self, obj):
-        return format_html('<img src="{}" width="{}" height="{}" />',
+        return format_html('<img src="{}" height="{}" />',
                            obj.img.url,
-                           f'{(obj.img.width / obj.img.height) * 150}px',
                            '150px',
                            )
