@@ -25,7 +25,7 @@ class Command(BaseCommand):
         location = response.json()
 
         try:
-            Place.objects.get_or_create(
+            place = Place.objects.get_or_create(
                 title=location['title'],
                 defaults={
                     'description_short': location['description_short'],
@@ -39,7 +39,6 @@ class Command(BaseCommand):
             return
 
         images = location['imgs']
-        place = Place.objects.get(title=location['title'])
 
         for image in images:
             response = requests.get(image)
@@ -47,4 +46,4 @@ class Command(BaseCommand):
             image_name = urlparse(image).path.split('/')[-1]
             image = PIL_Image.open(BytesIO(response.content))
             image.save(f'media/{image_name}', save=True)
-            Image.objects.get_or_create(place=place, img=image_name)
+            Image.objects.get_or_create(place=place[0], img=image_name)
