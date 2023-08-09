@@ -27,10 +27,12 @@ class Command(BaseCommand):
         try:
             Place.objects.get_or_create(
                 title=location['title'],
-                description_short=location['description_short'],
-                description_long=location['description_long'],
-                lng=location['coordinates']['lng'],
-                lat=location['coordinates']['lat'],
+                defaults={
+                    'description_short': location['description_short'],
+                    'description_long': location['description_long'],
+                    'lng': location['coordinates']['lng'],
+                    'lat': location['coordinates']['lat'],
+                    }
                 )
         except IntegrityError:
             print('Это место уже добавлено. Пожалуйста, выберите другое')
