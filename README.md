@@ -72,8 +72,10 @@ python .\manage.py runserver
 Для этого запустите команду:
 
 ```
-python manage.py load_place http://адрес/файла.json
+python manage.py load_place http://адрес/файла_1.json
 ```
+
+Вы можете передать сразу несколько адресов.
 
 Json файл должен быть следующего формата:
 ```
